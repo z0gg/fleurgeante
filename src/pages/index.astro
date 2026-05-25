@@ -756,6 +756,34 @@ const faq = [
         align-content: start;
       }
 
+      .social-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        margin-top: 0.4rem;
+      }
+
+      .social-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 2.7rem;
+        padding: 0 1rem;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.9);
+        border: 1px solid rgba(61, 37, 50, 0.1);
+        color: var(--text);
+        font-weight: 700;
+        box-shadow: var(--shadow-soft);
+        transition: transform 160ms ease, border-color 160ms ease, color 160ms ease;
+      }
+
+      .social-link:hover {
+        transform: translateY(-1px);
+        border-color: rgba(29, 177, 179, 0.35);
+        color: var(--teal-deep);
+      }
+
       .aside-panel {
         padding: 1.25rem;
         border-radius: 20px;
@@ -1203,10 +1231,20 @@ const faq = [
               <p>Palette, taille, implantation et intensité du décor ajustées au lieu et à l’expérience recherchée.</p>
             </div>
 
+            <div class="aside-panel">
+              <strong>Réseaux sociaux</strong>
+              <p>Suivez Fleurgeante et découvrez l’univers visuel, les inspirations et les nouveautés de l’atelier.</p>
+              <div class="social-links">
+                <a class="social-link" href="https://www.facebook.com/decolocationmk" target="_blank" rel="noopener noreferrer">Facebook</a>
+                <a class="social-link" href="https://www.tiktok.com/@decomk7" target="_blank" rel="noopener noreferrer">TikTok</a>
+                <a class="social-link" href="https://www.instagram.com/decomkestrie/" target="_blank" rel="noopener noreferrer">Instagram</a>
+              </div>
+            </div>
+
             <ul class="contact-mini-list">
               <li>Décrivez votre événement ou votre espace en quelques lignes.</li>
               <li>Ajoutez vos contraintes de date, de lieu ou d’ambiance.</li>
-              <li>Le formulaire utilise le même acheminement courriel que celui d’InfoSher.</li>
+              <li>Partagez vos inspirations et références visuelles pour guider la direction artistique.</li>
             </ul>
           </article>
         </div>
@@ -1222,7 +1260,14 @@ const faq = [
             <div class="footer-note">Décors floraux géants pour mariages, vitrines, photobooths et événements.</div>
           </div>
         </div>
-        <div class="footer-note">Signature florale sur mesure.</div>
+        <div>
+          <div class="footer-note">Signature florale sur mesure.</div>
+          <div class="social-links">
+            <a class="social-link" href="https://www.facebook.com/decolocationmk" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a class="social-link" href="https://www.tiktok.com/@decomk7" target="_blank" rel="noopener noreferrer">TikTok</a>
+            <a class="social-link" href="https://www.instagram.com/decomkestrie/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          </div>
+        </div>
       </div>
     </footer>
 
