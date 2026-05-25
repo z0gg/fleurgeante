@@ -1,44 +1,842 @@
 ---
+const services = [
+  {
+    title: 'Mariages & cérémonies',
+    text: 'Des compositions florales géantes qui habillent l’autel, l’allée, le coin photo ou la salle de réception avec une présence douce et spectaculaire.'
+  },
+  {
+    title: 'Vitrines & lancements',
+    text: 'Un décor signature pensé pour attirer le regard, créer de la curiosité et donner une identité forte à une vitrine, un pop-up ou une activation de marque.'
+  },
+  {
+    title: 'Photobooths & contenus photo',
+    text: 'Des installations qui deviennent immédiatement un point focal pour les photos, les vidéos et les souvenirs partagés par vos invités.'
+  },
+  {
+    title: 'Décors sur mesure',
+    text: 'Chaque projet est adapté au lieu, au format de l’événement, à la palette souhaitée et à l’ambiance que vous voulez créer.'
+  }
+];
+
+const benefits = [
+  'Impact visuel immédiat, même dans les grands espaces',
+  'Palette inspirée directement du logo de la marque',
+  'Formats parfaits pour événements, vitrines et séances photo',
+  'Approche artisanale et scénographique, pensée pour le wow'
+];
+
+const gallery = [
+  { src: '/gallery-temp-01.svg', alt: 'Aperçu temporaire d’une installation mariage de fleurs géantes', tag: 'Mariage' },
+  { src: '/gallery-temp-02.svg', alt: 'Aperçu temporaire d’une vitrine fleurie grand format', tag: 'Vitrine' },
+  { src: '/gallery-temp-03.svg', alt: 'Aperçu temporaire d’un décor photobooth floral', tag: 'Photobooth' },
+  { src: '/gallery-temp-04.svg', alt: 'Aperçu temporaire d’une entrée événementielle en fleurs géantes', tag: 'Événement' },
+  { src: '/gallery-temp-05.svg', alt: 'Aperçu temporaire d’une scénographie florale sur mesure', tag: 'Scénographie' },
+  { src: '/gallery-temp-06.svg', alt: 'Aperçu temporaire d’une activation de marque florale', tag: 'Corporate' }
+];
+
+const process = [
+  {
+    step: '01',
+    title: 'On imagine le décor',
+    text: 'Vous partagez le lieu, l’occasion, les dimensions et l’ambiance recherchée.'
+  },
+  {
+    step: '02',
+    title: 'On compose sur mesure',
+    text: 'Les fleurs, les hauteurs, les volumes et les couleurs sont pensés pour votre espace.'
+  },
+  {
+    step: '03',
+    title: 'On crée l’effet wow',
+    text: 'Le résultat transforme le décor en expérience visuelle mémorable.'
+  }
+];
+
+const faq = [
+  {
+    q: 'Quels types d’événements conviennent aux fleurs géantes ?',
+    a: 'Les fleurs géantes sont idéales pour les mariages, vitrines, lancements, anniversaires, photobooths, événements corporatifs et décors saisonniers.'
+  },
+  {
+    q: 'Est-ce que chaque projet peut être personnalisé ?',
+    a: 'Oui. Le concept, la palette, la taille des fleurs et l’implantation sont pensés selon le lieu et l’effet recherché.'
+  },
+  {
+    q: 'Les images de la galerie sont-elles définitives ?',
+    a: 'Non. Ce sont des visuels temporaires de démonstration. La galerie sera remplacée par vos vraies photos dès que vous me les enverrez.'
+  },
+  {
+    q: 'Le site est-il déjà prêt pour recevoir plus de contenu ?',
+    a: 'Oui. La structure est conçue pour accueillir facilement d’autres galeries, témoignages, types de décors et photos de réalisations.'
+  }
+];
 ---
 
 <html lang="fr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Fleurgeante — En construction</title>
+    <title>Fleurgeante — Fleurs géantes sur mesure</title>
+    <meta
+      name="description"
+      content="Fleurgeante crée des fleurs géantes sur mesure pour mariages, vitrines, photobooths et événements en mettant l’accent sur l’impact visuel et l’élégance florale."
+    />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <style>
       :root {
-        color-scheme: light dark;
-        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+        --bg: #fff7f5;
+        --surface: rgba(255, 255, 255, 0.8);
+        --surface-strong: #ffffff;
+        --text: #412936;
+        --muted: #775765;
+        --line: rgba(65, 41, 54, 0.1);
+        --pink: #f07b96;
+        --pink-soft: #f89fb1;
+        --teal: #1db1b3;
+        --teal-deep: #157f81;
+        --shadow: 0 24px 60px rgba(77, 35, 54, 0.14);
+        --radius-xl: 32px;
+        --radius-lg: 24px;
+        --radius-md: 18px;
+        --container: min(1180px, calc(100vw - 2rem));
       }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
       body {
         margin: 0;
-        min-height: 100vh;
-        display: grid;
-        place-items: center;
-        background: #fffaf7;
-        color: #1f1720;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(248, 159, 177, 0.22), transparent 28%),
+          radial-gradient(circle at bottom right, rgba(29, 177, 179, 0.18), transparent 26%),
+          var(--bg);
       }
-      main {
-        text-align: center;
+
+      a { color: inherit; text-decoration: none; }
+      img { display: block; max-width: 100%; }
+      .container { width: var(--container); margin: 0 auto; }
+      .section { padding: 5.5rem 0; }
+      .section-tight { padding: 4rem 0; }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.55rem 0.95rem;
+        border-radius: 999px;
+        background: rgba(240, 123, 150, 0.12);
+        border: 1px solid rgba(240, 123, 150, 0.18);
+        color: var(--pink);
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(16px);
+        background: rgba(255, 247, 245, 0.78);
+        border-bottom: 1px solid rgba(65, 41, 54, 0.06);
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        min-height: 84px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.9rem;
+        font-weight: 800;
+        font-size: 1.05rem;
+      }
+
+      .brand img {
+        width: 56px;
+        height: 56px;
+      }
+
+      .brand small {
+        display: block;
+        font-size: 0.78rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-top: 0.18rem;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      nav a {
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      nav a:hover { color: var(--text); }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.65rem;
+        min-height: 3.35rem;
+        padding: 0 1.25rem;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        font-weight: 700;
+        transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-1px);
+      }
+
+      .button-primary {
+        color: white;
+        background: linear-gradient(135deg, var(--pink), var(--teal));
+        box-shadow: 0 20px 45px rgba(29, 177, 179, 0.22);
+      }
+
+      .button-secondary {
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.78);
+        border-color: rgba(65, 41, 54, 0.08);
+      }
+
+      .hero {
+        position: relative;
+        overflow: clip;
+        padding: 4.75rem 0 3rem;
+      }
+
+      .hero::before,
+      .hero::after {
+        content: "";
+        position: absolute;
+        border-radius: 999px;
+        pointer-events: none;
+        filter: blur(12px);
+      }
+
+      .hero::before {
+        width: 28rem;
+        height: 28rem;
+        right: -8rem;
+        top: -6rem;
+        background: radial-gradient(circle, rgba(240, 123, 150, 0.28), transparent 66%);
+      }
+
+      .hero::after {
+        width: 24rem;
+        height: 24rem;
+        left: -8rem;
+        bottom: -9rem;
+        background: radial-gradient(circle, rgba(29, 177, 179, 0.24), transparent 68%);
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(3rem, 7vw, 6.15rem);
+        line-height: 0.95;
+        margin: 1rem 0 1.15rem;
+        letter-spacing: -0.045em;
+      }
+
+      .hero-copy p {
+        max-width: 40rem;
+        font-size: 1.14rem;
+        line-height: 1.8;
+        color: var(--muted);
+        margin: 0;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 0.95rem;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 2.4rem;
+      }
+
+      .stat {
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(65, 41, 54, 0.08);
+        border-radius: 20px;
+        padding: 1rem 1rem 1.1rem;
+        box-shadow: var(--shadow);
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.45rem;
+        margin-bottom: 0.3rem;
+      }
+
+      .hero-art {
+        position: relative;
+        min-height: 38rem;
+        border-radius: var(--radius-xl);
+        padding: 1.35rem;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,0.58), rgba(255,255,255,0.15)),
+          linear-gradient(135deg, rgba(240, 123, 150, 0.34), rgba(29, 177, 179, 0.24));
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        box-shadow: var(--shadow);
+      }
+
+      .hero-card {
+        position: absolute;
+        inset: 1.2rem;
+        border-radius: calc(var(--radius-xl) - 10px);
+        overflow: hidden;
+        background:
+          radial-gradient(circle at top, rgba(255,255,255,0.95), rgba(255,255,255,0.25)),
+          linear-gradient(160deg, rgba(248, 159, 177, 0.65), rgba(29, 177, 179, 0.2));
+      }
+
+      .hero-card img {
+        position: absolute;
+        width: min(78%, 430px);
+        right: 8%;
+        top: 9%;
+        filter: drop-shadow(0 30px 40px rgba(74, 28, 44, 0.16));
+      }
+
+      .floating-note {
+        position: absolute;
+        left: 1.3rem;
+        padding: 1rem 1.1rem;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.84);
+        border: 1px solid rgba(65, 41, 54, 0.07);
+        box-shadow: 0 22px 46px rgba(68, 35, 52, 0.16);
+        max-width: 15rem;
+      }
+
+      .floating-note strong {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-size: 1rem;
+      }
+
+      .note-top { top: 2rem; }
+      .note-bottom { bottom: 2rem; }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
+      }
+
+      .card {
+        border-radius: var(--radius-lg);
+        background: var(--surface-strong);
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+      }
+
+      .intro-card {
         padding: 2rem;
       }
-      h1 {
-        margin: 0;
-        font-size: clamp(2rem, 6vw, 4rem);
+
+      .intro-card p,
+      .service-card p,
+      .process-card p,
+      .faq-card p,
+      .cta-copy p,
+      .gallery-intro p {
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      .section-title {
+        font-size: clamp(2.3rem, 4vw, 4rem);
+        line-height: 1;
+        margin: 0.9rem 0 1rem;
+        letter-spacing: -0.04em;
+      }
+
+      .benefit-list {
+        margin: 1.35rem 0 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 0.95rem;
+      }
+
+      .benefit-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.8rem;
+      }
+
+      .benefit-list li::before {
+        content: "";
+        width: 0.85rem;
+        height: 0.85rem;
+        flex: 0 0 auto;
+        margin-top: 0.45rem;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--pink), var(--teal));
+      }
+
+      .services-grid,
+      .process-grid,
+      .faq-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.35rem;
+      }
+
+      .service-card,
+      .process-card,
+      .faq-card {
+        padding: 1.7rem;
+      }
+
+      .service-card h3,
+      .process-card h3,
+      .faq-card h3 {
+        margin: 0 0 0.8rem;
+        font-size: 1.4rem;
+      }
+
+      .service-icon,
+      .process-step {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 999px;
+        display: inline-grid;
+        place-items: center;
+        font-weight: 800;
+        margin-bottom: 1.1rem;
+      }
+
+      .service-icon {
+        background: rgba(29, 177, 179, 0.13);
+        color: var(--teal-deep);
+      }
+
+      .process-step {
+        background: rgba(240, 123, 150, 0.13);
+        color: var(--pink);
+      }
+
+      .gallery-wrap {
+        border-radius: calc(var(--radius-xl) + 4px);
+        background: linear-gradient(180deg, rgba(255,255,255,0.75), rgba(255,255,255,0.92));
+        border: 1px solid rgba(65, 41, 54, 0.08);
+        box-shadow: var(--shadow);
+        padding: 1.5rem;
+      }
+
+      .gallery-intro {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 1.25rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .gallery-intro p { max-width: 43rem; margin: 0; }
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .gallery-card {
+        overflow: hidden;
+        border-radius: 22px;
+        background: white;
+        border: 1px solid rgba(65, 41, 54, 0.07);
+      }
+
+      .gallery-card img {
+        aspect-ratio: 4 / 3;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .gallery-card figcaption {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        padding: 1rem 1rem 1.1rem;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        min-height: 2rem;
+        padding: 0 0.8rem;
+        border-radius: 999px;
+        background: rgba(240, 123, 150, 0.12);
+        color: var(--pink);
+        font-size: 0.82rem;
         font-weight: 700;
       }
-      p {
-        margin-top: 1rem;
-        font-size: 1.125rem;
-        opacity: 0.8;
+
+      .band {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, rgba(240,123,150,0.96), rgba(29,177,179,0.96));
+        color: white;
+      }
+
+      .band::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 15% 20%, rgba(255,255,255,0.24), transparent 20%),
+          radial-gradient(circle at 80% 80%, rgba(255,255,255,0.18), transparent 18%);
+        pointer-events: none;
+      }
+
+      .band-grid {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 1.6rem;
+        align-items: center;
+      }
+
+      .band .section-title,
+      .band p,
+      .band .eyebrow {
+        color: white;
+      }
+
+      .band .eyebrow {
+        background: rgba(255, 255, 255, 0.18);
+        border-color: rgba(255, 255, 255, 0.25);
+      }
+
+      .cta-card {
+        padding: 2rem;
+        background: rgba(255,255,255,0.16);
+        border: 1px solid rgba(255,255,255,0.22);
+        border-radius: var(--radius-lg);
+        backdrop-filter: blur(10px);
+      }
+
+      .cta-list {
+        margin: 0;
+        padding-left: 1.1rem;
+        display: grid;
+        gap: 0.65rem;
+      }
+
+      footer {
+        padding: 2.4rem 0 3rem;
+      }
+
+      .footer-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1.25rem 1.4rem;
+      }
+
+      .footer-brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.9rem;
+      }
+
+      .footer-brand img {
+        width: 52px;
+        height: 52px;
+      }
+
+      .footer-note {
+        color: var(--muted);
+        font-size: 0.96rem;
+      }
+
+      @media (max-width: 980px) {
+        .hero-grid,
+        .grid-2,
+        .gallery-grid,
+        .band-grid,
+        .services-grid,
+        .process-grid,
+        .faq-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-art { min-height: 32rem; }
+        .hero-card img { width: min(70%, 360px); right: 50%; transform: translateX(50%); }
+        .gallery-intro,
+        .footer-card,
+        .header-inner {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        nav { justify-content: flex-start; }
+      }
+
+      @media (max-width: 720px) {
+        .section { padding: 4.2rem 0; }
+        .hero { padding-top: 3.25rem; }
+        .hero-stats { grid-template-columns: 1fr; }
+        .hero-art { min-height: 28rem; }
+        .hero-card img { width: min(74%, 300px); top: 14%; }
+        .floating-note {
+          left: 1rem;
+          right: 1rem;
+          max-width: none;
+        }
+        .note-top { top: 1rem; }
+        .note-bottom { bottom: 1rem; }
       }
     </style>
   </head>
   <body>
-    <main>
-      <h1>En construction.</h1>
-      <p>Le site Fleurgeante arrive bientôt.</p>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#accueil" aria-label="Retour à l’accueil Fleurgeante">
+          <img src="/logo-fleurgeante.svg" alt="Logo Fleurgeante" />
+          <span>
+            Fleurgeante
+            <small>Fleurs géantes sur mesure</small>
+          </span>
+        </a>
+
+        <nav aria-label="Navigation principale">
+          <a href="#services">Services</a>
+          <a href="#galerie">Galerie</a>
+          <a href="#processus">Processus</a>
+          <a href="#faq">FAQ</a>
+          <a class="button button-primary" href="#contact">Demander un décor</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="accueil">
+      <section class="hero section-tight">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow">Univers floral grand format</span>
+            <h1>Des fleurs géantes qui transforment un lieu en moment inoubliable.</h1>
+            <p>
+              Fleurgeante crée des décors floraux spectaculaires pour mariages, vitrines, photobooths,
+              lancements et événements. L’objectif: offrir une présence visuelle forte, poétique et hautement
+              photogénique, dans l’esprit des grandes installations florales contemporaines.
+            </p>
+
+            <div class="hero-actions">
+              <a class="button button-primary" href="#galerie">Voir la galerie</a>
+              <a class="button button-secondary" href="#contact">Préparer mon projet</a>
+            </div>
+
+            <div class="hero-stats" aria-label="Points forts">
+              <div class="stat">
+                <strong>Sur mesure</strong>
+                Palette, volumes et composition adaptés à votre événement.
+              </div>
+              <div class="stat">
+                <strong>Grand impact</strong>
+                Une scénographie pensée pour être vue, vécue et photographiée.
+              </div>
+              <div class="stat">
+                <strong>FR seulement</strong>
+                Première version du site en français, prête à évoluer ensuite.
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-art" aria-hidden="true">
+            <div class="hero-card">
+              <div class="floating-note note-top">
+                <strong>Mariages, vitrines, événements</strong>
+                Des compositions qui créent un décor signature et un vrai point focal.
+              </div>
+              <img src="/logo-fleurgeante.svg" alt="" />
+              <div class="floating-note note-bottom">
+                <strong>Palette du site</strong>
+                Rose tendre, rose poudré et turquoise inspirés directement du logo fourni.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container grid-2">
+          <article class="card intro-card">
+            <span class="eyebrow">Positionnement</span>
+            <h2 class="section-title">Une signature florale pensée pour le wow.</h2>
+            <p>
+              Les références du marché mettent en avant les grands roses, pivoines, marguerites, tournesols et
+              compositions monumentales pour la décoration événementielle, les mises en scène photo et les vitrines.
+              Ici, on reprend cet esprit en l’adaptant à Fleurgeante avec une présence plus douce, plus boutique et
+              plus haut de gamme.
+            </p>
+          </article>
+
+          <article class="card intro-card">
+            <span class="eyebrow">Pourquoi ça fonctionne</span>
+            <ul class="benefit-list">
+              {benefits.map((item) => <li>{item}</li>)}
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="services">
+        <div class="container">
+          <span class="eyebrow">Services</span>
+          <h2 class="section-title">Des décors floraux géants pour des univers très différents.</h2>
+          <div class="services-grid">
+            {services.map((service, index) => (
+              <article class="card service-card">
+                <div class="service-icon">0{index + 1}</div>
+                <h3>{service.title}</h3>
+                <p>{service.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="galerie">
+        <div class="container gallery-wrap">
+          <div class="gallery-intro">
+            <div>
+              <span class="eyebrow">Galerie</span>
+              <h2 class="section-title">Visuels temporaires en attendant vos vraies photos.</h2>
+            </div>
+            <p>
+              J’ai intégré une galerie de démonstration pour préparer la structure du site. Dès que vous m’envoyez vos
+              images, je remplace ces aperçus temporaires par vos réalisations réelles.
+            </p>
+          </div>
+
+          <div class="gallery-grid">
+            {gallery.map((item) => (
+              <figure class="gallery-card">
+                <img src={item.src} alt={item.alt} loading="lazy" />
+                <figcaption>
+                  <strong>{item.tag}</strong>
+                  <span class="tag">Temporaire</span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="section band" id="processus">
+        <div class="container band-grid">
+          <div>
+            <span class="eyebrow">Processus</span>
+            <h2 class="section-title">Une approche simple: imaginer, composer, émerveiller.</h2>
+            <p>
+              Le site met déjà en avant une méthode claire pour rassurer les clients: un échange sur le lieu,
+              une proposition adaptée à l’espace, puis une installation qui devient l’élément marquant du décor.
+            </p>
+          </div>
+
+          <div class="cta-card">
+            <div class="process-grid">
+              {process.map((item) => (
+                <article>
+                  <div class="process-step">{item.step}</div>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="faq">
+        <div class="container">
+          <span class="eyebrow">Questions fréquentes</span>
+          <h2 class="section-title">Le site est prêt pour expliquer le concept clairement.</h2>
+          <div class="faq-grid">
+            {faq.map((item) => (
+              <article class="card faq-card">
+                <h3>{item.q}</h3>
+                <p>{item.a}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="container grid-2">
+          <article class="card intro-card cta-copy">
+            <span class="eyebrow">Contact</span>
+            <h2 class="section-title">Parfait pour une prochaine étape avec vos vraies réalisations.</h2>
+            <p>
+              La base du site est maintenant orientée autour des fleurs géantes, de votre logo et de votre palette.
+              La prochaine amélioration naturelle sera d’ajouter vos photos finales, vos coordonnées réelles et, si vous
+              le souhaitez, une section témoignages ou une page galerie plus complète.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="mailto:bonjour@fleurgeante.ca">bonjour@fleurgeante.ca</a>
+              <a class="button button-secondary" href="#accueil">Revenir en haut</a>
+            </div>
+          </article>
+
+          <article class="card intro-card">
+            <span class="eyebrow">Texte suggéré</span>
+            <ul class="cta-list">
+              <li>Fleurs géantes sur mesure pour mariages, vitrines, événements et décors photo.</li>
+              <li>Créations florales grand format pensées pour marquer les esprits et sublimer l’espace.</li>
+              <li>Installations poétiques, photogéniques et personnalisées selon votre univers.</li>
+              <li>Version française en place maintenant; contenu et galerie réels à enrichir ensuite.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
     </main>
+
+    <footer>
+      <div class="container card footer-card">
+        <div class="footer-brand">
+          <img src="/logo-fleurgeante.svg" alt="Logo Fleurgeante" />
+          <div>
+            <strong>Fleurgeante</strong>
+            <div class="footer-note">Décors floraux géants en version française — palette et identité basées sur votre logo.</div>
+          </div>
+        </div>
+        <div class="footer-note">Prévisualisation prête avant toute fusion vers main.</div>
+      </div>
+    </footer>
   </body>
 </html>
