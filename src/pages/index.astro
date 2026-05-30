@@ -119,6 +119,7 @@ const faq = [
       img { display: block; max-width: 100%; }
       a { color: inherit; text-decoration: none; }
       button, input, textarea { font: inherit; }
+      .hidden { position: absolute; opacity: 0; pointer-events: none; width: 1px; height: 1px; }
       .container { width: var(--container); margin: 0 auto; }
       .section { padding: 5.6rem 0; }
       .section-tight { padding: 4.25rem 0; }
@@ -1266,9 +1267,9 @@ const faq = [
 
               <div class="field-grid">
                 <input class="field" type="text" name="name" placeholder="Nom" required />
-                <input class="field" type="text" name="organization" placeholder="Entreprise, marque ou type d’événement" />
-                <input class="field" type="tel" name="phone" placeholder="Téléphone" required />
-                <input class="field" type="text" name="date" placeholder="Date ou période souhaitée" />
+                <input class="field" type="email" name="email" placeholder="Courriel" required />
+                <input class="field" type="tel" name="phone" placeholder="Téléphone" />
+                <input class="field" type="text" name="event_date" placeholder="Date ou période souhaitée" />
               </div>
 
               <textarea
@@ -1276,7 +1277,7 @@ const faq = [
                 name="message"
                 rows="5"
                 required
-                placeholder="Décrivez brièvement votre projet : type d’événement, lieu, ambiance recherchée, dimensions ou couleur souhaitée..."
+                placeholder="Décrivez brièvement votre projet : type d’événement, lieu, ambiance recherchée, dimensions, couleurs ou inspirations..."
               ></textarea>
 
               <div id="form-success" class="form-status is-success">✅ Votre message a été envoyé. Nous vous répondrons sous peu.</div>
@@ -1287,7 +1288,7 @@ const faq = [
                   <span id="submit-label">Envoyer la demande</span>
                   <span id="submit-loading" style="display:none;">Envoi…</span>
                 </button>
-                <a class="button button-secondary" href="#accueil">Revenir en haut</a>
+                <a class="button button-secondary" href="tel:+18195881387">819.588.1387</a>
               </div>
             </form>
           </article>
@@ -1299,6 +1300,11 @@ const faq = [
               Fleurgeante s’adresse aux projets qui veulent un décor floral plus grand que nature, capable de signer un
               espace et de créer un souvenir fort dès le premier regard.
             </p>
+
+            <div class="aside-panel">
+              <strong>Téléphone</strong>
+              <p><a href="tel:+18195881387">819.588.1387</a></p>
+            </div>
 
             <div class="aside-panel">
               <strong>Types de projets</strong>
